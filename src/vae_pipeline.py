@@ -149,7 +149,7 @@ class MyDataset(Dataset):
         else: 
             raise TypeError('Prediction Model is not Known')
         
-        
+
 
 
 pred_mode = 'current_step' # current_step/multi_step
@@ -165,6 +165,29 @@ batch_size = 128
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 valid_dataloader = DataLoader(valid_dataset, batch_size=1, shuffle=False)
 test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False)
+
+
+ret = []
+for item in train_dataloader:
+    for i in item:
+        ret.append(i)
+
+
+training_data = np.array(ret)
+print(f"shape of training data: {training_data.shape}")
+
+
+ret = []
+for item in valid_dataloader:
+    for i in item:
+        ret.append(i)
+
+
+valid_data = np.array(ret)
+print(f"shape of training data: {valid_data.shape}")
+
+
+
 
 
 
